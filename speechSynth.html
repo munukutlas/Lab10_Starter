@@ -46,15 +46,10 @@
     var ldclient = LDClient.initialize('61a42c12ef44260fa01b0cd2', user);
   
     function render() {
-      var shouldShow = ldclient.variation('textbox-background', false);
-      console.log('here');
-      if (shouldShow == false) {
-        console.log('false');
-      }
+      var shouldShow = ldclient.variation('text-background', false);
       if (shouldShow == true) {
-        console.log('true');
         let textbox = document.getElementById('text-to-speak');
-        textbox.classList.add('blue');
+        textbox.style.backgroundColor = 'purple';
       }
     }
   
