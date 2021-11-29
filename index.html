@@ -47,26 +47,21 @@
   </main>
 
   <script>
+    let chars = 'abcdefghijklmnoqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     var user = {
-      firstName: 'Bob',
-      lastName: 'Loblaw',
-      key: 'UNIQUE IDENTIFIER',
-      custom: {
-        groups: 'beta_testers'
-      }
+      key: chars.charAt(Math.floor(Math.random()*chars.length))
     };
   
-    var div = document.createElement('div');
-    document.body.appendChild(div);
-  
-    div.appendChild(document.createTextNode('Initializing...'));
   
     var ldclient = LDClient.initialize('61a42c12ef44260fa01b0cd2', user);
   
     function render() {
       var shouldShow = ldclient.variation('blue-background', false);
-      var label = (shouldShow ? 'Showing' : 'Not showing') + ' your feature to ' + user.key;
-      div.replaceChild(document.createTextNode(label), div.firstChild);
+      if (shouldShow == true) {
+        console.log('true');
+        let body = document.body;
+        body.classList.add('blue');
+      }
     }
   
     ldclient.on('ready', render);
